@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'items/index'
-    get 'items/show'
-    get 'items/new'
-    get 'items/edit'
-  end
-  namespace :user do
-    get 'items/index'
-    get 'items/show'
-  end
   devise_for :admins
   devise_for :users
+  root to: 'user/items#index'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  namespace :admin do
+    resources :items, only: [:new, :create, :index, :show, :edit, :update]
+  end
+  namespace :user do
+    resources :items, only: [:index, :show]
+  end
+
 end
