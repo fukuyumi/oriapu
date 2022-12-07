@@ -1,0 +1,16 @@
+<header class='top-page-header'>
+  <div class='logo'>
+    <%= link_to 'Logo', '/', class:"foodme-icon"%>
+  </div>
+  <div class='nav'>
+    <ul class='lists'>
+      <%if user_signed_in? %>
+        <li><%= link_to current_user.nick_name, "#", class: "user-nickname" %></li>
+        <li><%= link_to 'ログアウト', "#", class: "logout" %></li>
+      <% else %>
+        <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+        <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+      <% end %>
+    </ul>
+  </div>
+</header>
